@@ -33,6 +33,24 @@ plug "andreyorst/fzf.kak" config %{
 } 
 ```
 
+Example:
+
+```kak
+plug "andreyorst/fzf.kak" config %{
+  map global normal <c-p> ': fzf-mode<ret>'
+} defer "fzf-file" %{
+  set-option global fzf_grep_command 'rg'
+  set-option global fzf_file_command "find . \( -path '*/.svn*' -o
+                                                -path '*/.git*' -o
+                                                -path '*/.cache*' -o
+                                                -path '*/.mypy_cache*' \) -prune -o -type f -print"
+  set-option global fzf_preview false
+}
+```
+
+See below for the list of options with the module name they are defined in.
+
+
 ### Without plugin manager
 
 This plugin consists of several parts which are referred to as "modules".
